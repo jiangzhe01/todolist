@@ -30,5 +30,5 @@ npm run dev
 
 ### todolist界面
 
-![image-20200829215540828](https://github.com/jiangzhe01/todolist/blob/master/img/dir.png)
+![image-20200829215540828](https://github.com/jiangzhe01/todolist/blob/master/img/ui.png)
 
