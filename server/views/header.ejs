@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <form action="#">
+        <label for="addItem" class="title"><%- title%></label>
+        <input id="addItem" class="addItem" data-orderId="doing<%- doingNum%>" onkeyup="addHandle()" type="text" placeholder="添加TODO">
+      </form>
+      
+    </nav>
+  </header>
+  <script>
+    function addHandle(e) {
+      var e = e || window.event;
+      e.preventDefault();
+      if(e.keyCode === 13) {
+        var item = e.target.value
+        var orderId = e.target.getAttribute("data-orderId")
+        e.target.value = ""
+        location.href="/item/"+orderId+'/'+item;
+        
+      }
+    }
+  </script>
+</body>
+</html>

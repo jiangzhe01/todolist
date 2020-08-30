@@ -1,0 +1,63 @@
+<%- include('./header.ejs') %>
+
+<div class="container">
+  
+  <div class="doing">
+    <div>
+      <h2 class="title">正在进行</h2>
+      <button class="badge"><%- doingNum%></button>
+    </div>
+    
+    <% doingItems.forEach(function(item){ %>
+          <div class="content">
+            <% if(doneItems[doneNum-1]) {%>
+              <input type="checkbox" name="checkbox" class="checkbox" onclick="location.href='/updateState/<%- item.id%>/<%- item.orderId%>/<%- doneItems[doneNum-1].orderId%>/<%- item.state%>'">
+            <% } else {%>
+              <input type="checkbox" name="checkbox" class="checkbox" onclick="location.href='/updateState/<%- item.id%>/<%- item.orderId%>/done0/<%- item.state%>'">
+            <% }%>
+            <span><%- item.orderId%></span>
+            <a class="handle" href="/deleteItem/<%- item.id%>">删除</a>
+            <span class="message" data-state="<%- item.state%>" data-number="<%- item.id%>" contenteditable="true" onblur="keyupHandle()"><%-item.content%></span>
+          </div>
+      
+    <% }); %>
+  </div>
+  
+  <div class="done">
+    <div>
+      <h2 class="title">已经完成</h2>
+      <button class="badge"><%- doneNum%></button>
+    </div>
+    <% doneItems.forEach(function(item){ %>
+        <div class="doneContent">
+          <% if(doingItems[doingNum-1]) {%>
+            <input type="checkbox" data-number="<%- item.id%>" name="checkbox" class="checkbox" checked onclick="location.href='/updateState/<%- item.id%>/<%- item.orderId%>/<%- doingItems[doingNum-1].orderId%>/<%- item.state%>'">
+          <% } else {%>
+            <input type="checkbox" data-number="<%- item.id%>" name="checkbox" class="checkbox" checked onclick="location.href='/updateState/<%- item.id%>/<%- item.orderId%>/doing0/<%- item.state%>'">
+          <% } %>
+          <span><%- item.orderId%></span>
+          <a class="handle" href="/deleteItem/<%- item.id%>">删除</a>
+          <span class="message" data-state="<%- item.state%>" data-number="<%- item.id%>" contenteditable="true" onblur="keyupHandle()"><%-item.content%></spanf>
+        </div>
+    <% }); %>
+  </div>
+</div>
+
+
+<script>
+  function keyupHandle(e) {
+    var e = e || window.event;
+    // //要阻止默认事件
+    // // e.preventDefault();
+    //  //我要的是enter件，也就是enter事件，所以要判断是哪个事件
+    // if(e.keyCode===13){
+    //   e.preventDefault();
+    //   e.target.setAttribute('contenteditable', 'false')
+    // }
+    var id = e.target.getAttribute('data-number');
+    var state = e.target.getAttribute('data-state');
+    var item = e.target.innerHTML;
+    location.href='/updateItem/' + id + '/' + state + '/' + item
+  }
+  
+</script>
