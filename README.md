@@ -26,9 +26,9 @@ npm run dev
 
 ### 目录结构
 
-![image-20200829215441814](https://github.com/jiangzhe01/todolist/blob/master/img/image-20200829215441814.png)
+![image-20200829215441814](https://github.com/jiangzhe01/todolist/blob/master/img/dir.png)
 
 ### todolist界面
 
-![image-20200829215540828](C:\Users\11078\AppData\Roaming\Typora\typora-user-images\image-20200829215540828.png)
+![image-20200829215540828](https://github.com/jiangzhe01/todolist/blob/master/img/dir.png)
 
